@@ -28,11 +28,11 @@ document.getElementById("image").addEventListener("change", function (event) {
 function addCard() {
     let title = document.getElementById('title').value.trim();
     let description = document.getElementById('description').value.trim();
-    let imageSrc = document.getElementById('image-preview').src;
+    let imageSrc = document.getElementById('image').src;
     let label = document.getElementById('preview-label');
 
     if (title === "" || description === "" || imageSrc === "") {
-        showPopup("Judul atau deskripsi tidak boleh kosong!");
+        showPopup("Tidak boleh ada yang kosong!");
         return;
     }
 
