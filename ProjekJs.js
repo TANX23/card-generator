@@ -28,14 +28,21 @@ document.getElementById("image").addEventListener("change", function (event) {
 function addCard() {
     let title = document.getElementById('title').value.trim();
     let description = document.getElementById('description').value.trim();
-    let imageSrc = document.getElementById('image').src;
-    let label = document.getElementById('preview-label');
-
-    if (title === "" || description === "" || imageSrc === "") {
-        showPopup("Tidak boleh ada yang kosong!");
+    let fileInput = document.getElementById('image');
+    let imagePreview = document.getElementById('image-preview');
+    
+    // Check if all required fields are filled (title, description, and image)
+    if (title === "" || description === "" || 
+        !fileInput.files || fileInput.files.length === 0 || 
+        imagePreview.style.display === "none" || imagePreview.src === "") {
+        
+        showPopup("Tidak Boleh ada yang Kosong!");
         return;
     }
 
+    // If we get here, we have all required fields
+    let imageSrc = imagePreview.src;
+    
     let newCard = { title, description, imageSrc };
     let cards = JSON.parse(localStorage.getItem("cards")) || [];
     cards.push(newCard);
@@ -43,17 +50,18 @@ function addCard() {
 
     createCardElement(title, description, imageSrc);
 
+    // Reset form
     document.getElementById('title').value = "";
     document.getElementById('description').value = "";
     document.getElementById('image').value = "";
     document.getElementById('image-preview').src = "";
     document.getElementById('image-preview').style.display = "none";
-    document.getElementById("file-name").textContent = "No Choosen File";
+    document.getElementById("file-name").textContent = "No file chosen";
 
+    let label = document.getElementById('preview-label');
     label.style.top = "50%";
     label.style.fontSize = "14px";
     label.style.color = "#555";
-
 }
 
 function showPopup(message) {
