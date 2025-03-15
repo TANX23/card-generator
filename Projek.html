@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@100;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="projekCSS.css"> 
+</head>
+
+<body>
+    <div class="Head">
+        <h1 id="Head-title">Card Generator</h1>
+    </div>
+    <div class="input-form">
+        <div class="form-container">
+            <h2 class="textcontent">Judul</h2>
+            <input type="text" id="title" placeholder="Masukkan Judul" required>
+            <h2 class="textcontent">Deskripsi</h2>
+            <textarea id="description" placeholder="Masukkan Deskripsi" required></textarea>
+            <h2 class="textcontent">Image</h2>
+<div class="file-upload-container">
+    <label for="image" class="custom-file-label">Choose File</label>
+    <input type="file" id="image" accept="image/jpeg, image/png" class="hidden-file-input">
+    <span id="file-name">No file chosen</span>
+</div>
+        </div>
+
+        <div class="image-preview-container">
+            <span id="preview-label">Image Preview</span>
+
+            <img id="image-preview" src="" alt="Preview Gambar">
+        </div>
+
+        <button onclick="addCard()">SUBMIT</button>
+    </div>
+    <div id="card-container"></div>
+
+    <div id="alert-popup" class="popup">
+        <h3>Ada yang kosong</h3>
+        <p>Judul atau Deskripsi tidak boleh kosong</p>
+        <button onclick="closePopup('edit-popup')">OK</button>
+    </div>
+
+    <div id="edit-popup" class="popup">
+        <h3>Edit Card</h3>
+        <input type="text" id="edit-title" placeholder="Edit Judul">
+        <textarea id="edit-description" placeholder="Edit Deskripsi"></textarea>
+        <button onclick="saveEdit()">Simpan</button>
+        <button onclick="closePopup('edit-popup')">Batal</button>
+    </div>
+
+    <div id="delete-popup" class="popup">
+        <p>Apakah yakin ingin menghapus ini?</p>
+        <button onclick="confirmDelete()">Delete</button>
+        <button onclick="closePopup('delete-popup')">Batal</button>
+    </div>
+
+    <script src="ProjekJs.js"></script>
+</body>
+
+</html>
